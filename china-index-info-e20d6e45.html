@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>买球站 · 信息索引与内容说明页</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e1e2a;
+      background: #f5f6fa;
+      line-height: 1.6;
+    }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* 深色hero */
+    .hero {
+      background: linear-gradient(135deg, #0b0b12 0%, #1d1d30 100%);
+      color: #e8e8f0;
+      padding: 80px 0 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(50,130,230,0.08) 0%, transparent 70%);
+      top: -120px;
+      right: -80px;
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: #f0f2ff;
+    }
+    .hero .sub {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      max-width: 640px;
+      margin: 0 auto 28px;
+    }
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(4px);
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #b0c7ff;
+      margin-top: 8px;
+    }
+
+    /* 内容区通用 */
+    section {
+      padding: 56px 0;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+      color: #13131f;
+      letter-spacing: -0.01em;
+      border-left: 5px solid #2b6ed7;
+      padding-left: 18px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: #3d3d4f;
+      margin-bottom: 36px;
+      max-width: 780px;
+    }
+
+    /* 卡片网格（优势区） */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px 24px 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.25s;
+      border: 1px solid #edeef4;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.07);
+      border-color: #d0d7e6;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #12121f;
+    }
+    .card p {
+      color: #404053;
+      font-size: 0.95rem;
+    }
+    .card .icon {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      background: #eef3fc;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      border-radius: 14px;
+    }
+
+    /* 说明区 —— 双栏 */
+    .two-col {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .col-left {
+      flex: 1.2;
+      min-width: 280px;
+    }
+    .col-right {
+      flex: 1;
+      min-width: 240px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+      border: 1px solid #e5e8f0;
+    }
+    .col-right h4 {
+      font-size: 1.2rem;
+      margin-bottom: 18px;
+      color: #0d1b3b;
+      border-bottom: 2px solid #dce2f0;
+      padding-bottom: 8px;
+    }
+    .col-right ul {
+      list-style: none;
+    }
+    .col-right ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f1f8;
+      font-size: 0.95rem;
+      color: #2f2f42;
+    }
+    .col-right ul li::before {
+      content: '▹ ';
+      color: #2b6ed7;
+      font-weight: bold;
+    }
+
+    /* FAQ摘要 */
+    .faq-list {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .faq-item {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px 24px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+      border: 1px solid #eaeaf2;
+    }
+    .faq-item strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: #0b1a34;
+    }
+    .faq-item p {
+      color: #3d3d52;
+      font-size: 0.92rem;
+    }
+
+    /* 底部链接区 */
+    .footer-links {
+      background: #1a1a2a;
+      color: #b0b7cf;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .footer-links a {
+      color: #b7ccff;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(255,255,255,0.15);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+      border-bottom-color: #ffffff;
+    }
+    .footer-links .link-block {
+      margin: 0 auto;
+      max-width: 480px;
+    }
+    .footer-links p {
+      margin-top: 24px;
+      font-size: 0.88rem;
+      opacity: 0.7;
+    }
+
+    /* 响应式 */
+    @media (max-width: 820px) {
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .faq-list { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+    @media (max-width: 600px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .two-col { flex-direction: column; }
+      .hero { padding: 56px 0 48px; }
+      .section-title { font-size: 1.5rem; }
+    }
+
+    /* 强调色链接（正文内） */
+    a.highlight-link {
+      color: #1a5bbf;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      font-weight: 500;
+    }
+    a.highlight-link:hover {
+      color: #0d3d8a;
+    }
+
+    /* 正文区段间距 */
+    .text-block p {
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero 区 -->
+  <header class="hero">
+    <div class="container">
+      <h1>买球站 · 内容索引</h1>
+      <p class="sub">围绕体育赛事与信息整合，提供结构化参考。不夸大、不引导，只做清晰的内容整理。</p>
+      <span class="tagline">⚽ 信息参考 · 主题说明页</span>
+    </div>
+  </header>
+
+  <!-- 优势区：卡片网格 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">为什么关注这个主题</h2>
+      <p class="section-sub">从内容结构、信息检索和赛事覆盖等角度出发，以下是该方向常见被关注的几个方面。</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">📋</div>
+          <h3>内容结构清晰</h3>
+          <p>将分散的赛事信息、规则说明、数据汇总按类别整理，便于浏览者快速定位感兴趣的部分。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔍</div>
+          <h3>信息检索便捷</h3>
+          <p>通过关键词索引与分类标签，减少重复查找时间，提升获取有效内容的效率。</p>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>赛事覆盖多元</h3>
+          <p>涵盖不同地区、不同级别的比赛内容，从主流联赛到区域性赛事均有提及。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区：双栏介绍 -->
+  <section style="background: #ffffff; padding: 60px 0;">
+    <div class="container">
+      <h2 class="section-title" style="border-left-color: #1f5bbf;">主题索引说明</h2>
+      <div class="two-col">
+        <div class="col-left text-block">
+          <p><strong>「买球站」</strong> 是一个聚焦体育赛事信息整合的索引型内容站。在这里，你可以找到与各大足球、篮球等运动相关的赛程梳理、统计数据、队伍近况以及规则科普。</p>
+          <p>站点内容以客观整理为主，不包含预测或诱导性表述。所有信息均来自公开数据或可溯源的赛事记录，旨在为感兴趣的人提供一个结构化的参考起点。</p>
+          <p>无论你是想快速了解某一联赛的当前赛季概况，还是希望对比不同赛事的赛制差异，<a href="https://china-index-maiqiu.com" class="highlight-link">买球站</a>的索引目录都能帮你节省搜索时间。内容模块按赛事类型、时间线、关键词等维度划分，兼顾深度与广度。</p>
+          <p style="margin-top: 24px; background: #f1f4fd; padding: 16px 20px; border-radius: 12px; color: #1f2a47;">📌 举个例子：如果你对「欧洲杯预选赛的积分规则」或「某球队近五场交锋记录」感兴趣，通过站内分类可以快速跳转到对应页面，而不需要逐个网站翻找。</p>
+        </div>
+        <div class="col-right">
+          <h4>常见内容模块</h4>
+          <ul>
+            <li>联赛与杯赛赛程</li>
+            <li>球队数据与历史战绩</li>
+            <li>伤病与阵容变动汇总</li>
+            <li>裁判与规则解读</li>
+            <li>转会动态与赛季前瞻</li>
+            <li>不同赛制对比（小组/淘汰）</li>
+          </ul>
+          <p style="margin-top: 24px; font-size: 0.92rem; color: #2b2b44; border-top: 1px solid #e2e6f2; padding-top: 18px;">以上模块均以索引形式呈现，方便按需查阅。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ 摘要 -->
+  <section style="background: #f9faff;">
+    <div class="container">
+      <h2 class="section-title">常见问题摘要</h2>
+      <p class="section-sub">以下整理自用户经常问到的几个方向，答案力求简洁客观。</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <strong>❓ 这个站提供实时比分吗？</strong>
+          <p>不提供实时直播或即时比分。它更偏向于赛前/赛后的结构化信息汇总，比如赛程、历史数据、规则说明等。</p>
+        </div>
+        <div class="faq-item">
+          <strong>❓ 内容更新频率如何？</strong>
+          <p>根据赛季节奏更新，主流联赛期间每周刷新数据，非赛季期主要整理历史档案与规则内容。</p>
+        </div>
+        <div class="faq-item">
+          <strong>❓ 是否包含推荐或分析？</strong>
+          <p>不包含任何投注推荐、胜负预测或诱导性内容。所有页面仅做事实性信息索引。</p>
+        </div>
+        <div class="faq-item">
+          <strong>❓ 数据来源可靠吗？</strong>
+          <p>所有数据均引自公开的联赛官方记录或主流体育数据平台，并在页面中注明出处（如适用）。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部链接区 -->
+  <footer class="footer-links">
+    <div class="container">
+      <div class="link-block">
+        <p style="font-size: 1.1rem; margin-bottom: 12px;">📎 相关索引</p>
+        <p>如果你想进一步了解体育赛事信息索引的具体结构，可以访问 <a href="https://china-index-maiqiu.com">买球站</a> 查看完整分类。</p>
+        <p style="margin-top: 28px;">本页为介绍性落地页，内容仅供信息参考，不构成任何建议。</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

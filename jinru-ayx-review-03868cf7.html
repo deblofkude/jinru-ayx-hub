@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ayx · 轻导航页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f7fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    /* 顶部导航 */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0 20px;
+      border-bottom: 1px solid #dce8ef;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #0e4f5c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c6e7f;
+      font-weight: 450;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0f7a8a;
+    }
+
+    /* hero 区 */
+    .hero {
+      margin-top: 40px;
+      margin-bottom: 50px;
+      background: linear-gradient(145deg, #f0f7fa 0%, #e3f0f5 100%);
+      border-radius: 36px;
+      padding: 44px 40px;
+      box-shadow: 0 4px 12px rgba(14, 79, 92, 0.06);
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 500;
+      color: #0a3b44;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #2b5866;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: #d1e6ee;
+      color: #104d5b;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 450;
+    }
+
+    /* 核心介绍卡片 */
+    .intro-card {
+      background: white;
+      border-radius: 28px;
+      padding: 36px 34px;
+      margin-bottom: 44px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      border: 1px solid #deeef4;
+    }
+
+    .intro-card h2 {
+      font-size: 1.6rem;
+      font-weight: 460;
+      color: #124e5c;
+      margin-bottom: 16px;
+    }
+
+    .intro-card p {
+      color: #2d4f59;
+      margin-bottom: 14px;
+      max-width: 800px;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-card a {
+      color: #0a7d8e;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.2s;
+    }
+
+    .intro-card a:hover {
+      color: #054c58;
+      text-decoration-thickness: 2px;
+    }
+
+    /* 三个场景模块 —— 网格卡片 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0 40px;
+    }
+
+    .scene-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 22px 32px;
+      border: 1px solid #e0eef5;
+      transition: box-shadow 0.25s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 10px 24px rgba(14, 79, 92, 0.07);
+      transform: translateY(-3px);
+    }
+
+    .scene-card .icon {
+      width: 46px;
+      height: 46px;
+      background: #d5eaf2;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0e4f5c;
+      margin-bottom: 10px;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #365d68;
+      line-height: 1.55;
+    }
+
+    /* 常见说明 (FAQ 摘要) */
+    .faq-section {
+      background: white;
+      border-radius: 28px;
+      padding: 32px 34px;
+      margin: 36px 0 40px;
+      border: 1px solid #deeef4;
+    }
+
+    .faq-section h2 {
+      font-size: 1.4rem;
+      font-weight: 460;
+      color: #124e5c;
+      margin-bottom: 22px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e5f0f5;
+      padding: 16px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      color: #154f5d;
+      margin-bottom: 6px;
+    }
+
+    .faq-answer {
+      color: #3a636f;
+      font-size: 0.95rem;
+    }
+
+    .faq-answer a {
+      color: #0a7d8e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .faq-answer a:hover {
+      color: #054c58;
+    }
+
+    /* 提示 + 再次访问小段落 */
+    .note-banner {
+      background: #e4f1f7;
+      border-radius: 30px;
+      padding: 28px 34px;
+      margin: 42px 0 20px;
+      border-left: 3px solid #0f7a8a;
+    }
+
+    .note-banner p {
+      color: #1f5462;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .note-banner a {
+      color: #034e5e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+
+    .note-banner a:hover {
+      color: #01333e;
+    }
+
+    .footer-note {
+      margin-top: 50px;
+      text-align: center;
+      color: #678f9b;
+      font-size: 0.85rem;
+      border-top: 1px solid #dce8ef;
+      padding-top: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 780px) {
+      .hero {
+        padding: 32px 24px;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .scene-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding: 16px 0 40px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 6px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+      }
+
+      .hero h1 {
+        font-size: 1.4rem;
+      }
+
+      .hero {
+        padding: 26px 18px;
+        border-radius: 28px;
+      }
+
+      .scene-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .intro-card,
+      .faq-section,
+      .note-banner {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 顶部导航 -->
+    <nav class="nav">
+      <div class="nav-logo">ayx</div>
+      <ul class="nav-links">
+        <li><a href="#">场景</a></li>
+        <li><a href="#">说明</a></li>
+        <li><a href="#">收藏</a></li>
+      </ul>
+    </nav>
+
+    <!-- hero 区域 -->
+    <div class="hero">
+      <h1>再次遇见，依然记得</h1>
+      <p>有些地方值得反复回来。不是因为它新，而是因为它一直在那里，安静地变好。ayx 就是这样一个角落——你收藏过，后来忘了，直到某天再次打开，发现它比印象里更干净、更轻快。</p>
+      <span class="tagline">· 持续关注 · 不打扰 ·</span>
+    </div>
+
+    <!-- 核心介绍（自然叙述） -->
+    <div class="intro-card">
+      <h2>一个安静的位置</h2>
+      <p>
+        如果你曾经把 <a href="https://jinru-ayx.com.cn">ayx</a> 放进书签，或者只是某次偶然路过，那么这个页面大概是一个温和的提醒。这里没有复杂的入口，也没有堆积的跳转，有的只是一个可以慢慢看的介绍页，以及背后那个叫做 ayx 的站点。
+      </p>
+      <p>
+        它像一本翻到一半的书，合上之后，下次打开时依然认得你。有时候，反复访问不是因为内容爆炸，而是因为熟悉。ayx 不想变成嘈杂的广场，它更愿意做走廊尽头那扇半掩的门——你记得它，它就还在。
+      </p>
+    </div>
+
+    <!-- 三个场景模块（网格卡片） -->
+    <div class="scene-grid">
+      <div class="scene-card">
+        <div class="icon">📎</div>
+        <h3>收藏后回来</h3>
+        <p>书签栏里躺了几个月，再次点开，界面整洁，响应很快。不需要重新适应，一切还是原来的节奏。</p>
+      </div>
+      <div class="scene-card">
+        <div class="icon">🔄</div>
+        <h3>间歇性关注</h3>
+        <p>不是每天都来，但每隔几周会想起。看看有没有细微变化，发现一些新表述，或者只是确认它还在。</p>
+      </div>
+      <div class="scene-card">
+        <div class="icon">🔖</div>
+        <h3>记住一个名字</h3>
+        <p>有时候记住一个名字就够了。ayx 不是一个需要反复背诵的地址，而是一个你愿意在需要时自然想起的地方。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明（FAQ摘要） -->
+    <div class="faq-section">
+      <h2>一些平常的说明</h2>
+      <div class="faq-item">
+        <div class="faq-question">— 这个页面会经常变吗？</div>
+        <div class="faq-answer">结构保持稳定，但每段文字、每个卡片细节都会有所不同。你每次来，看到的都是一次新的叙述。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">— 我可以把它存起来吗？</div>
+        <div class="faq-answer">当然，书签或者收藏夹都合适。当你再次打开 <a href="https://jinru-ayx.com.cn">ayx</a>，它仍然像你第一次见到时那样诚实。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">— 为什么强调“再次访问”？</div>
+        <div class="faq-answer">因为值得反复来的地方不多。它不是靠推送提醒你，而是靠一种安静的在场感——你记得，它就值得。</div>
+      </div>
+    </div>
+
+    <!-- 提示 / 收藏小段落 -->
+    <div class="note-banner">
+      <p>如果你已经来过，那么欢迎再次回到 <a href="https://jinru-ayx.com.cn">ayx</a>。如果这是第一次，那么不妨把它放进收藏夹，像放一枚书签。下次再打开时，你会发现它还在，而且依然克制、干净。</p>
+      <p style="margin-bottom: 0;">持续关注不是一种义务，而是一种自然的重复。一个名字，一个角落，偶尔回来看看就很好。</p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+      · 轻量导航 · 不追踪 · 仅记录一次安静的访问 ·
+    </div>
+  </div>
+</body>
+</html>
